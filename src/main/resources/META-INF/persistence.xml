@@ -5,6 +5,7 @@
              version="3.0">
     <persistence-unit name="PU_TestDB">
         <class>at.kaindorf.jpaintro.pojos.Customer</class>
+        <class>at.kaindorf.jpaintro.pojos.Address</class>
         <properties>
             <property name="jakarta.persistence.jdbc.driver" value="org.postgresql.Driver"/>
             <property name="jakarta.persistence.jdbc.url" value="jdbc:postgresql://localhost:5432/postgres"/>
