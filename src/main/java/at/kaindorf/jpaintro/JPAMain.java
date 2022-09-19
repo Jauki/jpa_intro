@@ -1,5 +1,6 @@
 package at.kaindorf.jpaintro;
 
+import at.kaindorf.jpaintro.pojos.Address;
 import at.kaindorf.jpaintro.pojos.Customer;
 import at.kaindorf.jpaintro.pojos.CustomerId;
 import at.kaindorf.jpaintro.pojos.Gender;
@@ -24,11 +25,11 @@ public class JPAMain {
     }
 
     private void testDB() {
-        Customer customer1 = new Customer(new CustomerId("Entenhausen", 1L), "donald", "duck", LocalDate.now(), Gender.MALE);
+        Customer customer1 = new Customer(new CustomerId("Entenhausen", 1L), "donald", "duck", LocalDate.now(), Gender.MALE, null);
         // commits a OBJ
         em.persist(customer1);
 
-        Customer customer2 = new Customer(new CustomerId("Entenhausen", 2L), "lisa", "simpson", LocalDate.now(), Gender.FEMALE);
+        Customer customer2 = new Customer(new CustomerId("Entenhausen", 2L), "lisa", "simpson", LocalDate.now(), Gender.FEMALE, null);
         em.persist(customer2);
 
         // commits all the persisted changes to the Database

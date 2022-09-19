@@ -39,6 +39,7 @@ public class Customer implements Serializable {
     private Gender gender;
 
     @OneToOne
+    @JoinColumn(name="address")
     private Address address;
 
 }
