@@ -9,11 +9,15 @@ import lombok.NoArgsConstructor;
 import java.io.Serializable;
 import java.time.LocalDate;
 
-@Entity(name = "customer")
+@Entity
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
 //@IdClass(CustomerId.class)
+@NamedQueries({
+        @NamedQuery(name = "Customer.getAll", query = "SELECT c FROM Customer c"),
+        @NamedQuery(name = "Customer.getByLastname", query = "SELECT c FROM Customer c WHERE c.lastname LIKE :lastname ORDER BY c.dateOfBirth desc"),
+})
 public class Customer implements Serializable {
 //    @Id
 //    @GeneratedValue(strategy = GenerationType.AUTO) // if no arguments are passed AUTO is default option
@@ -38,7 +42,7 @@ public class Customer implements Serializable {
     @Enumerated(EnumType.STRING) // Ordinal => Integer; String => String
     private Gender gender;
 
-    @OneToOne
+    @OneToOne(cascade = CascadeType.PERSIST)
     @JoinColumn(name="address")
     private Address address;
 

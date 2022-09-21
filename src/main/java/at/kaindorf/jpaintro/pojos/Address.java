@@ -1,18 +1,14 @@
 package at.kaindorf.jpaintro.pojos;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.Id;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import jakarta.persistence.*;
+import lombok.*;
 
 import java.io.Serializable;
 
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
+@RequiredArgsConstructor
 @Entity
 public class Address implements Serializable {
     @Id
@@ -20,9 +16,16 @@ public class Address implements Serializable {
     @Column(name = "address_id")
     private Long addressId;
     @Column(nullable = false)
+    @NonNull
     private String street;
     @Column(nullable = false)
+    @NonNull
     private String number;
     @Column(name = "zip_code", nullable = false)
+    @NonNull
     private Integer zip;
+
+    @OneToOne(mappedBy = "address")
+    @ToString.Exclude
+    private Customer customer;
 }
