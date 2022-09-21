@@ -24,5 +24,5 @@ public class Address implements Serializable {
     @Column(nullable = false)
     private String number;
     @Column(name = "zip_code", nullable = false)
-    private Short zip;
+    private Integer zip;
 }

@@ -42,4 +42,11 @@ public class Customer implements Serializable {
     @JoinColumn(name="address")
     private Address address;
 
+    public Customer(CustomerId customerId, String firstname, String lastname, LocalDate dateOfBirth, Gender gender) {
+        this.customerId = customerId;
+        this.firstname = firstname;
+        this.lastname = lastname;
+        this.dateOfBirth = dateOfBirth;
+        this.gender = gender;
+    }
 }

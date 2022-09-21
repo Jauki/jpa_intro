@@ -25,11 +25,15 @@ public class JPAMain {
     }
 
     private void testDB() {
-        Customer customer1 = new Customer(new CustomerId("Entenhausen", 1L), "donald", "duck", LocalDate.now(), Gender.MALE, null);
+        Customer customer1 = new Customer(new CustomerId("Entenhausen", 1L), "donald", "duck", LocalDate.now(), Gender.MALE);
+        Address addr_donald = new Address(null, "Bllumenstr", "13", 95126);
+
+        customer1.setAddress(addr_donald);
         // commits a OBJ
+        em.persist(addr_donald);
         em.persist(customer1);
 
-        Customer customer2 = new Customer(new CustomerId("Entenhausen", 2L), "lisa", "simpson", LocalDate.now(), Gender.FEMALE, null);
+        Customer customer2 = new Customer(new CustomerId("Entenhausen", 2L), "lisa", "simpson", LocalDate.now(), Gender.FEMALE);
         em.persist(customer2);
 
         // commits all the persisted changes to the Database
