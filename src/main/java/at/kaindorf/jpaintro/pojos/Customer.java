@@ -42,7 +42,7 @@ public class Customer implements Serializable {
     @Enumerated(EnumType.STRING) // Ordinal => Integer; String => String
     private Gender gender;
 
-    @OneToOne(cascade = CascadeType.PERSIST)
+    @OneToOne(cascade = {CascadeType.PERSIST, CascadeType.REMOVE})
     @JoinColumn(name="address")
     private Address address;
 

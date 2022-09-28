@@ -6,12 +6,16 @@
     <persistence-unit name="PU_TestDB">
         <class>at.kaindorf.jpaintro.pojos.Customer</class>
         <class>at.kaindorf.jpaintro.pojos.Address</class>
+        <class>at.kaindorf.jpaintro.pojos.Player</class>
+        <class>at.kaindorf.jpaintro.pojos.Team</class>
+        <class>at.kaindorf.jpaintro.pojos.Book</class>
+        <class>at.kaindorf.jpaintro.pojos.BookSample</class>
         <properties>
             <property name="jakarta.persistence.jdbc.driver" value="org.postgresql.Driver"/>
             <property name="jakarta.persistence.jdbc.url" value="jdbc:postgresql://localhost:5432/postgres"/>
             <property name="jakarta.persistence.jdbc.user" value="root"/>
             <property name="jakarta.persistence.jdbc.password" value="root"/>
-            <property name="jakarta.persistence.schema-generation.database.action" value="none"/>
+            <property name="jakarta.persistence.schema-generation.database.action" value="drop-and-create"/>
             <property name="eclipselink.logging.level" value="FINE"/>
         </properties>
     </persistence-unit>

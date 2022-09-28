@@ -1,15 +1,13 @@
 package at.kaindorf.jpaintro;
 
-import at.kaindorf.jpaintro.pojos.Address;
-import at.kaindorf.jpaintro.pojos.Customer;
-import at.kaindorf.jpaintro.pojos.CustomerId;
-import at.kaindorf.jpaintro.pojos.Gender;
+import at.kaindorf.jpaintro.pojos.*;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityManagerFactory;
 import jakarta.persistence.Persistence;
 import jakarta.persistence.TypedQuery;
 
 import java.time.LocalDate;
+import java.time.Month;
 import java.util.List;
 
 public class JPAMain {
@@ -24,6 +22,20 @@ public class JPAMain {
     private void disconnect() {
         em.close();
         emf.close(); // important -> disconnect
+    }
+
+    public void initTeams () {
+        Player p1 = new Player("Emanuel", "Emegha", 20);
+        Player p2 = new Player("Albian", "Ajeti", 9);
+
+        Team t1 = new Team("SkSturm", LocalDate.of(1909, Month.MAY, 1));
+
+        t1.addPlayer(p1);
+        t1.addPlayer(p2);
+
+        em.persist(t1);
+        em.getTransaction().begin();
+        em.getTransaction().commit();
     }
 
     public void initDB() {
@@ -67,7 +79,8 @@ public class JPAMain {
         JPAMain main = new JPAMain();
         main.connect();
         //main.initDB();
-        main.testDB();
+        // main.testDB();
+        main.initTeams();
         main.disconnect();
     }
 }
